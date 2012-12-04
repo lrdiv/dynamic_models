@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.version = "0.3.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Craig Ulliott"]
+  s.authors = ["Craig Ulliott", "John Koht"]
   s.date = "2011-12-07"
   s.description = "Methods to get and build models directly from parameters.  Useful for DRYing up code, specifically very dynamic code for things like admin tools."
   s.email = "craigulliott@gmail.com"

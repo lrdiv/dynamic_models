@@ -21,7 +21,7 @@ module DynamicModels
   end
   
   # returns a new model, it can be set with an optional hash
-  def new_model(defaults = {})
+  def new_model(defaults = {}, role = :default)
     if parent_model
       # is it a has_many
       if parent_model.respond_to?(plural_model_name)
@@ -33,7 +33,7 @@ module DynamicModels
         raise "can't find association #{model_name} or #{plural_model_name} for #{parent_model.class.name}"
       end
     else
-      new_model = model_name.camelize.constantize.new(defaults)
+      new_model = model_name.camelize.constantize.new(defaults, :as => role)
     end
     return new_model
   end
