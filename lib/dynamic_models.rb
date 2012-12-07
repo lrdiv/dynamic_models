@@ -25,10 +25,10 @@ module DynamicModels
     if parent_model
       # is it a has_many
       if parent_model.respond_to?(plural_model_name)
-        new_model = parent_model.send(plural_model_name).build(defaults)
+        new_model = parent_model.send(plural_model_name).build(defaults, :as => role)
       # is is a has_one
       elsif parent_model.respond_to?(model_name)
-        new_model = parent_model.send("build_#{model_name}", defaults)
+        new_model = parent_model.send("build_#{model_name}", defaults, :as => role)
       else
         raise "can't find association #{model_name} or #{plural_model_name} for #{parent_model.class.name}"
       end
