@@ -2,12 +2,18 @@ module DynamicModels
 
   # looks for object_id notation, and returns a new model
   def parent_model
+    @parent_models = parent_models
+    @parent_models.last rescue nil
+  end
+
+  def parent_models
+    @parent_models = []
     params.each do |name, value|
       if name =~ /(.+)_id$/
-        return @parent_model ||= $1.camelize.constantize.find(value)
+        @parent_models << @parent_model = $1.camelize.constantize.unscoped.find(value)
       end
     end
-    nil
+    @parent_models
   end
 
   # model name from the controller
