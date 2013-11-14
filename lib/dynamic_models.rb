@@ -45,8 +45,8 @@ module DynamicModels
   end
 
   # returns a model using the id from the params
-  def fetch_model
-    model_name.camelize.constantize.find( params[:id] )
+  def fetch_model cache=true
+    model_name.camelize.constantize.find( params[:id], cache: cache )
   end
 
   # returns an array of models (using the name of this controller)
